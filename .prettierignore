@@ -1,0 +1,12 @@
+node_modules/
+dist/
+artifacts/
+cache/
+coverage/
+coverage.json
+typechain-types/
+.env
+.env.local
+.env.*.local
+*.log
+pnpm-lock.yaml

@@ -1,0 +1,34 @@
+{
+  "name": "simple-vesting",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,ts,sol,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,ts,sol,json,md}\"",
+    "format:fix": "prettier --write \"**/*.{js,ts,sol,json,md}\" --ignore-unknown"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.0",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
+    "@nomicfoundation/hardhat-viem": "^3.0.0",
+    "@nomicfoundation/hardhat-viem-assertions": "^3.0.0",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1",
+    "@pancakeswap/v3-core": "^1.0.2",
+    "@pancakeswap/v3-periphery": "^1.0.2",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "^22.17.2",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "hardhat": "^3.0.0",
+    "luxon": "^3.7.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-solidity": "^2.1.0",
+    "solhint-plugin-prettier": "^0.1.0",
+    "typescript": "~5.8.0",
+    "viem": "^2.33.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "@openzeppelin/contracts-upgradeable": "^5.4.0"
+  }
+}
