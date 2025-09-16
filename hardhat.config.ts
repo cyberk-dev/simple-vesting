@@ -2,10 +2,17 @@ import type { HardhatUserConfig } from 'hardhat/config';
 import hardhatNetworkHelpers from '@nomicfoundation/hardhat-network-helpers';
 import hardhatToolboxViemPlugin from '@nomicfoundation/hardhat-toolbox-viem';
 import hardhatViemAssertions from '@nomicfoundation/hardhat-viem-assertions';
+import hardhatVerify from '@nomicfoundation/hardhat-verify';
 import { configVariable } from 'hardhat/config';
+import { deployTask } from './tasks/deploy.js';
+import { addUsdTokensTask } from './tasks/addUsdTokens.js';
+import { setConfigTask } from './tasks/setConfig.js';
+import { startTask } from './tasks/start.js';
+import { deployAllTask } from './tasks/_DEPLOY_ALL.js';
 
 const config: HardhatUserConfig = {
-  plugins: [hardhatToolboxViemPlugin, hardhatNetworkHelpers, hardhatViemAssertions],
+  plugins: [hardhatToolboxViemPlugin, hardhatNetworkHelpers, hardhatViemAssertions, hardhatVerify],
+  tasks: [deployTask, addUsdTokensTask, setConfigTask, startTask, deployAllTask],
   solidity: {
     npmFilesToBuild: [
       '@openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol',
@@ -30,6 +37,11 @@ const config: HardhatUserConfig = {
           },
         },
       },
+    },
+  },
+  verify: {
+    etherscan: {
+      apiKey: configVariable('ETHERSCAN_API_KEY'),
     },
   },
   networks: {
@@ -58,7 +70,19 @@ const config: HardhatUserConfig = {
       type: 'http',
       chainType: 'l1',
       url: 'https://bsc-testnet-dataseed.bnbchain.org',
+      ignition: {
+        explorerUrl: 'https://testnet.bscscan.com',
+      },
       accounts: [configVariable('BSC_TESTNET_PRIVATE_KEY')],
+    },
+    bscMainnet: {
+      type: 'http',
+      chainType: 'l1',
+      url: 'https://bsc-dataseed.bnbchain.org',
+      ignition: {
+        explorerUrl: 'https://bscscan.com',
+      },
+      accounts: [configVariable('BSC_PRIVATE_KEY')],
     },
   },
 };
